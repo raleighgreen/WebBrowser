@@ -32,11 +32,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dvh-UK-hra">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dvh-UK-hra">
                                         <rect key="frame" x="56" y="0.0" width="241" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgZ-WL-Wy2">
                                         <rect key="frame" x="297" y="0.0" width="46" height="30"/>
@@ -44,6 +44,9 @@
                                             <constraint firstAttribute="width" secondItem="HgZ-WL-Wy2" secondAttribute="height" multiplier="23:15" id="wgt-Y2-duV"/>
                                         </constraints>
                                         <state key="normal" title="Go"/>
+                                        <connections>
+                                            <action selector="goPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M9y-F2-Nme"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -55,11 +58,27 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="&lt;" id="iSj-Q3-60y"/>
-                                    <barButtonItem title="&gt;" id="4yp-VL-GkW"/>
+                                    <barButtonItem title="&lt;" id="iSj-Q3-60y">
+                                        <connections>
+                                            <action selector="leftPressed:" destination="BYZ-38-t0r" id="kDN-b9-Nl9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="&gt;" id="4yp-VL-GkW">
+                                        <connections>
+                                            <action selector="rightPressed:" destination="BYZ-38-t0r" id="dpT-eU-nTa"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="EH8-OW-Lnp"/>
-                                    <barButtonItem title="-" id="pZe-U1-QLl"/>
-                                    <barButtonItem title="+" id="qSe-S7-Hrd"/>
+                                    <barButtonItem title="-" id="pZe-U1-QLl">
+                                        <connections>
+                                            <action selector="zoomOut:" destination="BYZ-38-t0r" id="2bJ-v0-zNn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="+" id="qSe-S7-Hrd">
+                                        <connections>
+                                            <action selector="zoomIn:" destination="BYZ-38-t0r" id="xH6-9s-4aj"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -75,6 +94,10 @@
                             <constraint firstItem="mpP-Wm-QIF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="wal-tm-qBM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webAddress" destination="Dvh-UK-hra" id="oGg-L5-kJy"/>
+                        <outlet property="webView" destination="mpP-Wm-QIF" id="8KT-jR-Hch"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
