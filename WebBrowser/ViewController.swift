@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
 
     @IBOutlet var webAddress: UITextField!
     @IBOutlet var webView: UIWebView!
@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        webAddress.delegate = self
+        webView.delegate = self
         webView.scalesPageToFit = true
     }
     
@@ -58,11 +61,18 @@ class ViewController: UIViewController {
             // web view will load page by giving it a url request
             webView.loadRequest(request)
             
-            
         }
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        webAddress.resignFirstResponder()
+        loadWebPage()
         
-        
+        return true
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        webAddress.text = webView.request?.url?.absoluteString
     }
 
 }
